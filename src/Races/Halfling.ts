@@ -5,7 +5,7 @@ class Halfling extends Race {
   private static _countHalfling = 0;
   constructor(name: string, dexterity: number) {
     super(name, dexterity);
-    this._maxLifePoints = 80;
+    this._maxLifePoints = 60;
     Halfling._countHalfling += 1;
   }
 
