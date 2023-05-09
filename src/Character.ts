@@ -27,7 +27,7 @@ class Character implements Fighter {
     };
   }
 
-  public get race(): Race {
+  get race(): Race {
     return this._race;
   }
 
@@ -52,7 +52,7 @@ class Character implements Fighter {
   }
 
   get energy() : Energy {
-    return this._energy;
+    return { ...this._energy };
   }
 
   receiveDamage(attackPoints: number):number {
@@ -70,14 +70,12 @@ class Character implements Fighter {
   }
 
   levelUp(): void {
-    this._maxLifePoints = getRandomInt(1, 10);
+    this._maxLifePoints += getRandomInt(1, 10);
     if (this._maxLifePoints > this.race.maxLifePoints) { 
       this._maxLifePoints = this._race.maxLifePoints; 
-    } 
-    this._lifePoints = this._lifePoints === this._maxLifePoints 
-      ? this._lifePoints : this._maxLifePoints;
+    }
+    this._lifePoints = this._maxLifePoints;
     this._strength += getRandomInt(1, 10);
-    this._lifePoints += getRandomInt(1, 10);
     this._dexterity += getRandomInt(1, 10);
     this._defense += getRandomInt(1, 10);
     this._energy.amount = 10;
